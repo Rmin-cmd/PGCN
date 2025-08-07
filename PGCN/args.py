@@ -14,7 +14,7 @@ def parse_args():
     parser.add_argument('--weight_decay', type=float, default=5e-4, help='Weight decay (L2 loss on parameters).')
     parser.add_argument('--patience', type=int, default=20, help='early stopping param')
     # hyperparameter
-    parser.add_argument('--epochs', type=int, default=300, help='Number of epochs to train.')
+    parser.add_argument('--epochs', type=int, default=50, help='Number of epochs to train.')
     parser.add_argument('--lr', type=float, default=0.01, help='Initial learning rate.')
     # parser.add_argument('--alpha', type=float, default=0.005, help='Attention reconciliation hyperparameters')  # 5e-4
     parser.add_argument('--beta', type=float, default=5e-5, help='update laplacian matrix')  # 5e-4
@@ -35,9 +35,8 @@ def parse_args():
         pass
     elif args.dataset == 'SEED4':
         parser.add_argument("--in_feature", type=int, default=5, help="")
-        parser.add_argument("--n_class", type=int, default=4, help="")
+        parser.add_argument("--n_class", type=int, default=9, help="")
         parser.add_argument("--epsilon", type=float, default=0.05, help="")
-        parser.add_argument("--datapath", type=str, default="../npy_data/seed4/", help="")
     elif args.dataset == 'SEED5':
         pass
     elif args.dataset == 'MPED':

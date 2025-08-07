@@ -183,9 +183,11 @@ class MesoLayer(nn.Module):
         :param subgraph_num:
         :return:
         """
-        subgraph_7 = [5, 9, 9, 25, 9, 9, 12]
+        # subgraph_7 = [5, 9, 9, 25, 9, 9, 12]
+        subgraph_7 = [2, 5, 5, 13, 5, 5, 5]
         subgraph_4 = [6, 6, 4, 6]
-        subgraph_2 = [27, 27]
+        # subgraph_2 = [27, 27]
+        subgraph_2 = [13, 13]
 
         graph_list = None
         if subgraph_num == 7:

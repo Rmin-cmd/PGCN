@@ -1,8 +1,15 @@
 import torch.nn as nn
 from layer_PGCN import LocalLayer, MesoLayer, GlobalLayer
 import torch
-from utils import normalize_adj
 
+
+def normalize_adj(adj):
+
+    D = torch.diag(torch.sum(adj, dim=1))
+    D_ = torch.diag(torch.diag(1 / torch.sqrt(D))) # D^(-1/2)
+    lap_matrix = torch.matmul(D_, torch.matmul(adj, D_))
+
+    return lap_matrix
 
 # torch.set_printoptions(profile="full")
 
@@ -60,7 +67,7 @@ class PGCN(nn.Module):
         # self.global_emb = nn.Linear(30, 70)
 
         # mlp
-        self.mlp0 = nn.Linear(71*70, 2048)
+        self.mlp0 = nn.Linear(2730, 2048)
         self.mlp1 = nn.Linear(2048, 1024)
         self.mlp2 = nn.Linear(1024, self.nclass)
 
