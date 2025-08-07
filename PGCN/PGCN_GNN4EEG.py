@@ -1,3 +1,5 @@
+import os
+
 import scipy.io as sio
 import torch
 # from torch_geometric.nn import ChebConv, global_mean_pool, SAGPooling
@@ -5,9 +7,9 @@ from torch.utils.data import DataLoader as dataloader
 import torch.optim as optim
 # from torch_geometric.utils import add_self_loops, degree
 from torch.optim.lr_scheduler import CosineAnnealingLR
-from utils import load_data
-from utils.utils_loss import Metrics
-from PAGCN.node_location import *
+import load_data
+from utils_loss import Metrics
+from node_location import *
 from torch.nn import Parameter
 from model_PGCN import PGCN
 from args import *
@@ -73,7 +75,8 @@ if __name__ == '__main__':
     results = {'acc': [], 'rec': [], 'prec': [], 'f1': []}
     n_per = num_subs // n_folds
 
-    data_path = 'data_FACED_GNN4EEG\FACED_dataset_9_labels_5s.mat'
+    # data_path = 'data_FACED_GNN4EEG\FACED_dataset_9_labels_5s.mat'
+    data_path = os.path.join(os.getcwd(), 'FACED_dataset_9_labels_5s.mat')
     loader = data_FACED('cross_subject', 9, data_path)
 
     for fold in tqdm(range(n_folds)):
