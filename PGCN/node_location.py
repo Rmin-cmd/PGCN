@@ -36,7 +36,8 @@ def get_ini_dis_m_FACED():
 # 'Oz',
 # 'O1',
 # 'O2']
-    m1 = sio.loadmat('..\data\pos.mat')['pos'] * 100
+    path_position = os.path.join(os.getcwd(), 'pos.mat')
+    m1 = sio.loadmat(path_position)['pos'] * 100
     dis_m1 = distance.cdist(m1, m1, 'euclidean')
 
     # 对元素进行检查，小于0时置0
