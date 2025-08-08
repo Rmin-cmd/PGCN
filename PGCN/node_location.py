@@ -65,6 +65,7 @@ def convert_dis_m_FACED(adj_matrix, delta=8):
 
 def return_coordinates():
     "return absolute coordinates"
-    return sio.loadmat('..\data\pos.mat')['pos'] * 100
+    path_position = os.path.join(os.getcwd(), 'pos.mat')
+    return sio.loadmat(path_position)['pos'] * 100
 
 
